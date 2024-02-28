@@ -5,7 +5,7 @@ def get_negation(atomic):
     if len(atomic) > 1:
         return atomic[-1]
     elif len(atomic) == 1:
-        return += "-" + atomic 
+        return "-" + atomic 
 
     return ""
 
