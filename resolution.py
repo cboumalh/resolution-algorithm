@@ -21,9 +21,13 @@ def resolve(clause_one, clause_two):
 
     for atomic in clause_one:
         neg = get_negation(atomic)
+        
         if neg in clause_two:
-            clause_one_resolved = copy.deepcopy(clause_one).remove(atomic)
-            clause_two_resolved = copy.deepcopy(clause_two).remove(neg)
+            clause_one_resolved = copy.deepcopy(clause_one)
+            clause_one_resolved.remove(atomic)
+
+            clause_two_resolved = copy.deepcopy(clause_two)
+            clause_two_resolved.remove(neg)
 
             combination = (clause_one_resolved).union(clause_two_resolved)
 
@@ -58,3 +62,9 @@ def resolution_algo(cnf_clauses):
         return resolution_algo(cnf_clauses)
     
     return cnf_clauses
+
+
+if __name__ == "__main__":
+    cnf_clauses = [{'A', 'E', '-B'}, {'-A', 'B', 'C'}, {'-A', '-D', '-E'}, {'A', 'D'}]
+
+    print(resolution_algo(cnf_clauses))
